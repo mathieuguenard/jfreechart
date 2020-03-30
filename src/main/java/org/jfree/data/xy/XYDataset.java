@@ -125,5 +125,6 @@ public interface XYDataset extends SeriesDataset {
      * @return The y-value.
      */
     public double getYValue(int series, int item);
-
+    
+    public Object getItem(int series, int item);
 }

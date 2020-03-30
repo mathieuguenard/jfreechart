@@ -98,5 +98,11 @@ public abstract class AbstractXYDataset extends AbstractSeriesDataset
         }
         return result;
     }
+    
+    
+    @Override
+	public Object getItem(int series, int item) {
+    	throw new UnsupportedOperationException("Not supported yet."); 
+	}
 
 }

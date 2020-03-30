@@ -62,7 +62,6 @@ import org.jfree.data.DomainOrder;
 import org.jfree.data.general.DatasetChangeListener;
 import org.jfree.data.general.DatasetGroup;
 import org.jfree.data.xy.XYDataset;
-
 /**
  * The Cyclic XY item renderer is specially designed to handle cyclic axis.
  * While the standard renderer would draw a line across the plot when a cycling
@@ -325,6 +324,7 @@ public class CyclicXYItemRenderer extends StandardXYItemRenderer
         /** The delegate dataset. */
         protected XYDataset delegateSet;
 
+        
         /** Storage for the x and y values. */
         Double[] x, y;
 
@@ -505,6 +505,12 @@ public class CyclicXYItemRenderer extends StandardXYItemRenderer
         public void setGroup(DatasetGroup group) {
             // unused in parent
         }
+
+		@Override
+		public Object getItem(int series, int item) {
+			// TODO Auto-generated method stub
+			return null;
+		}
 
     }
 

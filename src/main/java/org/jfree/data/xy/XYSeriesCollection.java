@@ -89,7 +89,7 @@ import org.jfree.data.general.Series;
  * Represents a collection of {@link XYSeries} objects that can be used as a
  * dataset.
  */
-public class XYSeriesCollection extends AbstractIntervalXYDataset
+public class XYSeriesCollection<TDataItem extends XYDataItem> extends AbstractIntervalXYDataset
         implements IntervalXYDataset, DomainInfo, RangeInfo, 
         VetoableChangeListener, PublicCloneable, Serializable {
 
@@ -114,7 +114,7 @@ public class XYSeriesCollection extends AbstractIntervalXYDataset
      *
      * @param series  the series ({@code null} ignored).
      */
-    public XYSeriesCollection(XYSeries series) {
+    public XYSeriesCollection(XYSeries<TDataItem> series) {
         this.data = new java.util.ArrayList();
         this.intervalDelegate = new IntervalXYDelegate(this, false);
         addChangeListener(this.intervalDelegate);
@@ -151,7 +151,7 @@ public class XYSeriesCollection extends AbstractIntervalXYDataset
      * @throws IllegalArgumentException if the key for the series is null or
      *     not unique within the dataset.
      */
-    public void addSeries(XYSeries series) {
+    public void addSeries(XYSeries<TDataItem> series) {
         Args.nullNotPermitted(series, "series");
         if (getSeriesIndex(series.getKey()) >= 0) {
             throw new IllegalArgumentException(
@@ -756,5 +756,11 @@ public class XYSeriesCollection extends AbstractIntervalXYDataset
             throw new PropertyVetoException("Duplicate key2", e);
         }
     }
+
+	@Override
+	public Object getItem(int series, int item) {
+		XYSeries s = (XYSeries) this.data.get(series);
+		return s.getDataItem(item);
+	}
 
 }
