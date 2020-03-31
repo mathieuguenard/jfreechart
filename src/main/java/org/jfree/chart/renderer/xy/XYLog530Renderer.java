@@ -450,7 +450,6 @@ public class XYLog530Renderer extends AbstractXYItemRenderer
         double transX1 = domainAxis.valueToJava2D(x1, dataArea, xAxisLocation);
         double transY1 = rangeAxis.valueToJava2D(y1, dataArea, yAxisLocation);
 
-            //Shape shape = getItemShape(series, item);
         try {
         	XYShapeDataItem shapeDataItem = (XYShapeDataItem) dataset.getItem(series, item);
 	        

@@ -58,6 +58,7 @@ import org.jfree.chart.plot.CrosshairState;
 import org.jfree.chart.plot.PlotRenderingInfo;
 import org.jfree.chart.plot.XYPlot;
 import org.jfree.chart.urls.XYURLGenerator;
+import org.jfree.data.DataItem;
 import org.jfree.data.DomainOrder;
 import org.jfree.data.general.DatasetChangeListener;
 import org.jfree.data.general.DatasetGroup;
@@ -507,9 +508,8 @@ public class CyclicXYItemRenderer extends StandardXYItemRenderer
         }
 
 		@Override
-		public Object getItem(int series, int item) {
-			// TODO Auto-generated method stub
-			return null;
+		public DataItem getItem(int series, int item) {
+			throw new UnsupportedOperationException("Not supported yet.");
 		}
 
     }

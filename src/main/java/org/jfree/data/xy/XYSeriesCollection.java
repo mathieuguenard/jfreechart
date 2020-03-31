@@ -97,7 +97,7 @@ public class XYSeriesCollection<TDataItem extends XYDataItem> extends AbstractIn
     private static final long serialVersionUID = -7590013825931496766L;
 
     /** The series that are included in the collection. */
-    private List data;
+    private List<XYSeries<TDataItem>> data;
 
     /** The interval delegate (used to calculate the start and end x-values). */
     private IntervalXYDelegate intervalDelegate;
@@ -758,8 +758,8 @@ public class XYSeriesCollection<TDataItem extends XYDataItem> extends AbstractIn
     }
 
 	@Override
-	public Object getItem(int series, int item) {
-		XYSeries s = (XYSeries) this.data.get(series);
+	public TDataItem getItem(int series, int item) {
+		XYSeries<TDataItem> s = (XYSeries<TDataItem>) this.data.get(series);
 		return s.getDataItem(item);
 	}
 

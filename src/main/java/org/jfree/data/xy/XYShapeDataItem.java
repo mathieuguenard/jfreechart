@@ -3,7 +3,7 @@ package org.jfree.data.xy;
 import java.awt.Shape;
 import java.io.Serializable;
 
-public class XYShapeDataItem extends XYDataItem implements Cloneable, Serializable{
+public class XYShapeDataItem extends XYDataItem {
 
 	
 	private static final long serialVersionUID = 2477972108001149458L;

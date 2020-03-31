@@ -47,13 +47,14 @@
 
 package org.jfree.data.xy;
 
+import org.jfree.data.DataItem;
 import org.jfree.data.DomainOrder;
 import org.jfree.data.general.SeriesDataset;
 
 /**
  * An interface through which data in the form of (x, y) items can be accessed.
  */
-public interface XYDataset extends SeriesDataset {
+public interface XYDataset<TDataItem extends DataItem> extends SeriesDataset {
 
     /**
      * Returns the order of the domain (or X) values returned by the dataset.
@@ -126,5 +127,5 @@ public interface XYDataset extends SeriesDataset {
      */
     public double getYValue(int series, int item);
     
-    public Object getItem(int series, int item);
+    public TDataItem getItem(int series, int item);
 }
