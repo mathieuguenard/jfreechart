@@ -1,7 +1,6 @@
 package org.jfree.data.xy;
 
 import java.awt.Shape;
-import java.io.Serializable;
 
 public class XYShapeDataItem extends XYDataItem {
 
@@ -10,6 +9,7 @@ public class XYShapeDataItem extends XYDataItem {
 
 	private Shape shape;
 	private Boolean hasShape = false;
+	
 	public XYShapeDataItem(double x, double y) {
 		super(x, y);
 	}
@@ -20,7 +20,7 @@ public class XYShapeDataItem extends XYDataItem {
 	
 	public XYShapeDataItem(double x, double y, Shape shape) {
 		super(x, y);
-		// TODO Auto-generated constructor stub
+
 		this.shape = shape;
 		this.hasShape = true;
 	}

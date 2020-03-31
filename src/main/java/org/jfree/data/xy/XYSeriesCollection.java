@@ -762,5 +762,4 @@ public class XYSeriesCollection<TDataItem extends XYDataItem> extends AbstractIn
 		XYSeries<TDataItem> s = (XYSeries<TDataItem>) this.data.get(series);
 		return s.getDataItem(item);
 	}
-
 }
