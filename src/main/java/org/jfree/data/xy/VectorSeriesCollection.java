@@ -61,9 +61,6 @@ import org.jfree.data.general.DatasetChangeEvent;
 public class VectorSeriesCollection extends AbstractXYDataset
         implements VectorXYDataset, PublicCloneable, Serializable {
 
-    /** Storage for the data series. */
-    private List data;
-
     /**
      * Creates a new {@code VectorSeriesCollection} instance.
      */
@@ -143,27 +140,7 @@ public class VectorSeriesCollection extends AbstractXYDataset
      *     range {@code 0} to {@code getSeriesCount() - 1}.
      */
     public VectorSeries getSeries(int series) {
-        if ((series < 0) || (series >= getSeriesCount())) {
-            throw new IllegalArgumentException("Series index out of bounds");
-        }
-        return (VectorSeries) this.data.get(series);
-    }
-
-    /**
-     * Returns the key for a series.
-     *
-     * @param series  the series index (in the range {@code 0} to
-     *     {@code getSeriesCount() - 1}).
-     *
-     * @return The key for a series.
-     *
-     * @throws IllegalArgumentException if {@code series} is not in the
-     *     specified range.
-     */
-    @Override
-    public Comparable getSeriesKey(int series) {
-        // defer argument checking
-        return getSeries(series).getKey();
+        return (VectorSeries) super.getSeries(series);
     }
 
     /**
