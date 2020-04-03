@@ -44,7 +44,10 @@
 
 package org.jfree.data.general;
 
+import org.jfree.data.xy.XYSeries;
+
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * An abstract implementation of the {@link SeriesDataset} interface,
@@ -55,6 +58,9 @@ public abstract class AbstractSeriesDataset extends AbstractDataset
 
     /** For serialization. */
     private static final long serialVersionUID = -6074996219705033171L;
+
+    /** The series that are included in the collection. */
+    protected List data;
 
     /**
      * Creates a new dataset.
@@ -84,7 +90,27 @@ public abstract class AbstractSeriesDataset extends AbstractDataset
      * @return The series key.
      */
     @Override
-    public abstract Comparable getSeriesKey(int series);
+    public Comparable getSeriesKey(int series) {
+        // defer argument checking
+        return getSeries(series).getKey();
+    }
+
+    /**
+     * Returns a series from the collection.
+     *
+     * @param series  the series index (zero-based).
+     *
+     * @return The series.
+     *
+     * @throws IllegalArgumentException if {@code series} is not in the
+     *     range {@code 0} to {@code getSeriesCount() - 1}.
+     */
+    public Series getSeries(int series) {
+        if ((series < 0) || (series >= getSeriesCount())) {
+            throw new IllegalArgumentException("Series index out of bounds");
+        }
+        return (Series) this.data.get(series);
+    }
 
     /**
      * Returns the index of the named series, or -1.
