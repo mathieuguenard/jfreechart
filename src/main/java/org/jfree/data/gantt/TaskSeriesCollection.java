@@ -81,9 +81,6 @@ public class TaskSeriesCollection extends AbstractSeriesDataset
      */
     private List keys;
 
-    /** Storage for the series. */
-    private List data;
-
     /**
      * Default constructor.
      */
@@ -123,10 +120,7 @@ public class TaskSeriesCollection extends AbstractSeriesDataset
      * @since 1.0.1
      */
     public TaskSeries getSeries(int series) {
-        if ((series < 0) || (series >= getSeriesCount())) {
-            throw new IllegalArgumentException("Series index out of bounds");
-        }
-        return (TaskSeries) this.data.get(series);
+        return (TaskSeries) super.getSeries(series);
     }
 
     /**
@@ -137,19 +131,6 @@ public class TaskSeriesCollection extends AbstractSeriesDataset
     @Override
     public int getSeriesCount() {
         return getRowCount();
-    }
-
-    /**
-     * Returns the name of a series.
-     *
-     * @param series  the series index (zero-based).
-     *
-     * @return The name of a series.
-     */
-    @Override
-    public Comparable getSeriesKey(int series) {
-        TaskSeries ts = (TaskSeries) this.data.get(series);
-        return ts.getKey();
     }
 
     /**

@@ -110,11 +110,7 @@ public class MatrixSeriesCollection extends AbstractXYZDataset
      * @return The series.
      */
     public MatrixSeries getSeries(int seriesIndex) {
-        if ((seriesIndex < 0) || (seriesIndex > getSeriesCount())) {
-            throw new IllegalArgumentException("Index outside valid range.");
-        }
-        MatrixSeries series = (MatrixSeries) this.seriesList.get(seriesIndex);
-        return series;
+         return (MatrixSeries) super.getSeries(seriesIndex);
     }
 
 
@@ -126,19 +122,6 @@ public class MatrixSeriesCollection extends AbstractXYZDataset
     @Override
     public int getSeriesCount() {
         return this.seriesList.size();
-    }
-
-
-    /**
-     * Returns the key for a series.
-     *
-     * @param seriesIndex zero-based series index.
-     *
-     * @return The key for a series.
-     */
-    @Override
-    public Comparable getSeriesKey(int seriesIndex) {
-        return getSeries(seriesIndex).getKey();
     }
 
 

@@ -96,9 +96,6 @@ public class XYSeriesCollection<TDataItem extends XYDataItem> extends AbstractIn
     /** For serialization. */
     private static final long serialVersionUID = -7590013825931496766L;
 
-    /** The series that are included in the collection. */
-    private List<XYSeries<TDataItem>> data;
-
     /** The interval delegate (used to calculate the start and end x-values). */
     private IntervalXYDelegate intervalDelegate;
 
@@ -259,10 +256,7 @@ public class XYSeriesCollection<TDataItem extends XYDataItem> extends AbstractIn
      *     range {@code 0} to {@code getSeriesCount() - 1}.
      */
     public XYSeries getSeries(int series) {
-        if ((series < 0) || (series >= getSeriesCount())) {
-            throw new IllegalArgumentException("Series index out of bounds");
-        }
-        return (XYSeries) this.data.get(series);
+        return (XYSeries) super.getSeries(series);
     }
 
     /**
@@ -287,23 +281,6 @@ public class XYSeriesCollection<TDataItem extends XYDataItem> extends AbstractIn
             }
         }
         throw new UnknownKeyException("Key not found: " + key);
-    }
-
-    /**
-     * Returns the key for a series.
-     *
-     * @param series  the series index (in the range {@code 0} to
-     *     {@code getSeriesCount() - 1}).
-     *
-     * @return The key for a series.
-     *
-     * @throws IllegalArgumentException if {@code series} is not in the
-     *     specified range.
-     */
-    @Override
-    public Comparable getSeriesKey(int series) {
-        // defer argument checking
-        return getSeries(series).getKey();
     }
 
     /**

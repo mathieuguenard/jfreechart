@@ -64,9 +64,6 @@ import org.jfree.data.general.DatasetChangeEvent;
 public class YIntervalSeriesCollection extends AbstractIntervalXYDataset
         implements IntervalXYDataset, PublicCloneable, Serializable {
 
-    /** Storage for the data series. */
-    private List data;
-
     /**
      * Creates a new instance of {@code YIntervalSeriesCollection}.
      */
@@ -108,27 +105,7 @@ public class YIntervalSeriesCollection extends AbstractIntervalXYDataset
      *     range {@code 0} to {@code getSeriesCount() - 1}.
      */
     public YIntervalSeries getSeries(int series) {
-        if ((series < 0) || (series >= getSeriesCount())) {
-            throw new IllegalArgumentException("Series index out of bounds");
-        }
-        return (YIntervalSeries) this.data.get(series);
-    }
-
-    /**
-     * Returns the key for a series.
-     *
-     * @param series  the series index (in the range {@code 0} to
-     *     {@code getSeriesCount() - 1}).
-     *
-     * @return The key for a series.
-     *
-     * @throws IllegalArgumentException if {@code series} is not in the
-     *     specified range.
-     */
-    @Override
-    public Comparable getSeriesKey(int series) {
-        // defer argument checking
-        return getSeries(series).getKey();
+        return (YIntervalSeries) super.getSeries(series);
     }
 
     /**
