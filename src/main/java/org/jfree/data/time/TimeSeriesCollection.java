@@ -125,9 +125,6 @@ public class TimeSeriesCollection extends AbstractIntervalXYDataset
     /** For serialization. */
     private static final long serialVersionUID = 834149929022371137L;
 
-    /** Storage for the time series. */
-    private List data;
-
     /** A working calendar (to recycle) */
     private Calendar workingCalendar;
 
@@ -265,11 +262,7 @@ public class TimeSeriesCollection extends AbstractIntervalXYDataset
      * @return The series.
      */
     public TimeSeries getSeries(int series) {
-        if ((series < 0) || (series >= getSeriesCount())) {
-            throw new IllegalArgumentException(
-                "The 'series' argument is out of bounds (" + series + ").");
-        }
-        return (TimeSeries) this.data.get(series);
+        return (TimeSeries) super.getSeries(series);
     }
 
     /**
@@ -291,20 +284,6 @@ public class TimeSeriesCollection extends AbstractIntervalXYDataset
             }
         }
         return result;
-    }
-
-    /**
-     * Returns the key for a series.
-     *
-     * @param series  the index of the series (zero-based).
-     *
-     * @return The key for a series.
-     */
-    @Override
-    public Comparable getSeriesKey(int series) {
-        // check arguments...delegated
-        // fetch the series name...
-        return getSeries(series).getKey();
     }
 
     /**
